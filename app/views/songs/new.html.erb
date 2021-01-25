@@ -9,11 +9,8 @@
   <br>
   <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   <br>
+  <input name="song[post_ids][]">
+  <input name="song[post_ids][]">
+  <br>
   <%= f.submit %>
-<% end %>
-
-<%= form_for @song do |f| %>
-  <input name="song[post_ids][]">
-  <input name="song[post_ids][]">
-  <input type="submit" value="Submit">
 <% end %>
