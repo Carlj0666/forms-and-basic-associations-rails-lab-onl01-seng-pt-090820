@@ -1,6 +1,6 @@
 <h1>Create a Song</h1>
 
-<%= form_for @song  do |f| %>
+<%= form_for @song do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
   <br>
@@ -9,8 +9,12 @@
   <br>
   <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   <br>
-  <input name="song[post_ids][]">
-  <input name="song[post_ids][]">
+  <%= f.fields_for :notes do |note| %>
+    <%= note.label :notes %>
+    <%= note.text_field :content %><br>
+    <%= note.label :notes %>
+    <%= note.text_field :content %><br>
+    <% end %>
   <br>
   <%= f.submit %>
 <% end %>

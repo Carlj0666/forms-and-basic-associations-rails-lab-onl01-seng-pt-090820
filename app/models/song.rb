@@ -3,6 +3,8 @@ class Song < ActiveRecord::Base
   belongs_to :artist
   belongs_to :genre
   has_many :notes
+  
+  accepts_nested_attributes_for :notes
 
   def artist_name=(name)
     self.artist = Artist.find_or_create_by(name: name)
@@ -19,13 +21,5 @@ class Song < ActiveRecord::Base
   def genre_name
     self.genre ? self.genre.name : nil
   end
-
-   def post_ids=(ids)
-     ids.each do |id|
-       song = Song.find(id)
-       self.songs << song
-     end
-   end
-
 
 end

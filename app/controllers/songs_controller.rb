@@ -1,3 +1,5 @@
+require 'pry'
+
 class SongsController < ApplicationController
   def index
     @songs = Song.all
@@ -9,6 +11,8 @@ class SongsController < ApplicationController
 
   def new
     @song = Song.new
+    @song.notes.build
+    @song.notes.build
   end
 
   def create
@@ -41,7 +45,7 @@ class SongsController < ApplicationController
   private
 
   def song_params
-     params.require(:song).permit(:artist_name, :title, :genre_id, post_ids: [])
+     params.require(:song).permit(:artist_name, :title, :genre_id, notes_attributes: [:notes])
   end
 end
 
